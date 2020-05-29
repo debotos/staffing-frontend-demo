@@ -15,7 +15,7 @@ import Logo from '../../assets/logo.png'
 import { MobileOrTablet, Desktop } from '../common/Device'
 import variables from '../../config/vars'
 
-const { PRIMARY_COLOR, USER_DATA } = variables
+const { PRIMARY_COLOR, USER_DATA, RECRUITER_ROLE } = variables
 
 export class Header extends Component {
 	componentDidMount() {
@@ -74,10 +74,13 @@ export class Header extends Component {
 		const {
 			title,
 			sticky = false,
+			divider = false,
 			bgColor,
 			auth: { isAuthenticated, user },
 			sideNavProps = {},
 		} = this.props
+
+		const isRecruiter = user.role === RECRUITER_ROLE
 
 		return (
 			/*
@@ -87,7 +90,7 @@ export class Header extends Component {
 			*/
 			<>
 				<header style={{ display: 'initial' }}>
-					<Container sticky={sticky} bgcolor={bgColor}>
+					<Container divider={divider} sticky={sticky} bgcolor={bgColor}>
 						<MobileOrTablet>
 							<div style={{ flex: 1 }}>
 								<MenuButton onClick={this.drawerToggleHandler}>
@@ -100,7 +103,11 @@ export class Header extends Component {
 						</Desktop>
 
 						<LogoContainer>
-							<AppLogo src={Logo} alt='Care Pine Home Health' onClick={() => history.push('/')} />
+							<AppLogo
+								src={Logo}
+								alt='Care Pine Home Health'
+								onClick={() => history.push(isRecruiter ? '/recruiter' : '/')}
+							/>
 							{title && <h3 style={{ marginTop: '8px', textAlign: 'center' }}>{title}</h3>}
 						</LogoContainer>
 
@@ -174,6 +181,7 @@ const Container = styled.div`
 	z-index: ${(props) => props.sticky && '99'};
 	background-color: ${(props) => props.sticky && '#edf2f7'};
 	box-shadow: ${(props) => props.sticky && `0 .125rem .25rem rgba(0,0,0,.075)!important`};
+	border-bottom: ${(props) => props.divider && `2px solid rgba(0,0,0,.075)`};
 	background-color: ${(props) => props.bgcolor};
 `
 

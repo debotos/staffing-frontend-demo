@@ -7,7 +7,7 @@ export class Dashboard extends Component {
 	render() {
 		return (
 			<>
-				<Header sideNavProps={{ recruiterNav: true }} />
+				<Header divider sideNavProps={{ recruiterNav: true }} />
 				<div style={{ display: 'flex' }}>
 					<DrawerNavigation recruiterNav={true} onlyDesktop />
 					<div style={{ width: '100%' }}>
