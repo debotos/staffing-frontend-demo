@@ -1,0 +1,182 @@
+/* Global Styles */
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+body {
+	background-color: #edf2f7;
+	font-family: 'Open Sans', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: 'Vollkorn', serif !important;
+	font-weight: 600 !important;
+}
+th {
+	font-family: 'Vollkorn', serif !important;
+	font-weight: 600 !important;
+}
+
+.hide-native-scrollbar,
+.ant-modal-wrap {
+	scrollbar-width: none; /* Firefox 64 */
+	-ms-overflow-style: none; /* Internet Explorer 11 */
+	&::-webkit-scrollbar {
+		/** WebKit */
+		display: none;
+		width: 0;
+		height: 0;
+	}
+}
+
+.customTable {
+	border: 1px solid rgba(34, 36, 38, 0.1);
+	th,
+	td {
+		border: 1px solid rgba(34, 36, 38, 0.1);
+		padding: 0.5em 0.5em;
+	}
+}
+
+.title {
+	font-size: 20px;
+	margin: 10px 0;
+	position: relative;
+}
+.title:before {
+	content: '';
+	background: #28a745;
+	width: 25px;
+	height: 3px;
+	display: inline-block;
+	position: absolute;
+	bottom: -3px;
+}
+
+/* antd style override */
+
+.ant-modal {
+	@media (max-width: 767px) {
+		// top: 0;
+	}
+}
+.ant-row.ant-form-item {
+	flex-direction: column; /* Label & Input field align vertically */
+}
+.ant-form-item {
+	margin-bottom: 5px !important;
+	.ant-form-item-label {
+		padding: 0 0 0 !important;
+	}
+}
+.ant-divider-inner-text {
+	font-weight: bold;
+}
+.ant-dropdown.ant-dropdown-placement-bottomRight {
+	min-width: 120px !important;
+}
+.ant-table-tbody .ant-table-wrapper:only-child .ant-table {
+	margin: -8px -8px -8px !important;
+}
+.ant-table-cell.ant-table-row-expand-icon-cell {
+	@media screen and (max-width: 991px) {
+		display: flex !important;
+	}
+}
+.ant-table {
+	display: block;
+
+	@media screen and (max-width: 991px) {
+		&-thead {
+			display: none;
+		}
+
+		&-thead > tr,
+		&-tbody > tr {
+			th,
+			td {
+				&:first-of-type {
+					padding-top: 0.6rem !important;
+				}
+
+				&:last-of-type {
+					padding-top: 5px !important;
+					padding-bottom: 0.6rem !important;
+				}
+			}
+
+			> th,
+			> td {
+				display: block;
+				width: auto !important;
+				border: none;
+				padding: 0 0.7rem !important;
+
+				&:last-child {
+					border-bottom: 1px solid #eee;
+				}
+			}
+		}
+	}
+}
+/* Editable table cell */
+.editable-cell-value-wrap {
+	padding: 5px 12px;
+	cursor: pointer;
+}
+.editable-cell-value-wrap:hover {
+	border: 1px solid #d9d9d9;
+	border-radius: 4px;
+	padding: 4px 11px;
+}
+/* Transfer input */
+.ant-transfer {
+	@media screen and (max-width: 770px) {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+
+		.ant-transfer-operation {
+			display: flex;
+			margin-top: 10px;
+			margin-bottom: 5px;
+			.ant-btn:first-child {
+				margin-right: 5px;
+				transform: rotate(90deg);
+			}
+			.ant-btn:last-child {
+				margin-left: 5px;
+				transform: rotate(90deg);
+			}
+		}
+	}
+}
+
+/* Override via custom antd class */
+.mobile-working-hour-input-collapse {
+	.ant-collapse-content-box {
+		padding: 0;
+	}
+}
+
+.ant-modal-wrap.antd-full-screen-modal {
+	.ant-modal {
+		width: 95% !important;
+		max-width: 1100px !important;
+	}
+}
+
+.ant-upload-hint,
+.ant-upload-text {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.ant-tabs-content > .ant-tabs-tabpane-inactive {
+	margin: 0 !important;
+	display: none;
+}
