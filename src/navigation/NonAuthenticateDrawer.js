@@ -27,7 +27,7 @@ function NonAuthenticateDrawer({ closeDrawer, desktop }) {
 export default NonAuthenticateDrawer
 
 const NavRoutes = [
+	{ icon: <MdWork />, to: '/', label: 'Jobs' },
 	{ icon: <MdLock />, to: '/login', label: 'Login' },
 	{ icon: <MdPersonAdd />, to: '/signup', label: 'Signup' },
-	{ icon: <MdWork />, to: '/jobs', label: 'Jobs' },
 ]

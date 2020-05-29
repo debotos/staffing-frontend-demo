@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
 
@@ -26,9 +26,9 @@ const MobileDrawerContainer = styled.div`
 `
 const DesktopDrawerContainer = styled(MobileDrawerContainer)``
 
-class sideDrawer extends React.Component {
+class sideDrawer extends Component {
 	render() {
-		const { show, auth, closeDrawer, setLoading, ...restProps } = this.props
+		const { show, auth, onlyDesktop = false, ...restProps } = this.props
 
 		let drawerClasses = 'side-drawer'
 		if (show) {
@@ -37,43 +37,41 @@ class sideDrawer extends React.Component {
 
 		const { isAuthenticated, user } = auth
 
-		return (
-			<>
-				<MobileOrTablet>
-					<div className={drawerClasses}>
-						<MobileDrawerContainer>
-							{isAuthenticated ? (
-								<AuthenticateDrawer
-									user={user}
-									closeDrawer={closeDrawer}
-									setLoading={setLoading}
-									desktop={false}
-									{...restProps}
-								/>
-							) : (
-								<NonAuthenticateDrawer closeDrawer={closeDrawer} desktop={false} {...restProps} />
-							)}
-						</MobileDrawerContainer>
-					</div>
-				</MobileOrTablet>
-				<Desktop>
-					<div className='side-drawer-desktop'>
-						<DesktopDrawerContainer>
-							{isAuthenticated ? (
-								<AuthenticateDrawer
-									user={user}
-									setLoading={setLoading}
-									desktop={true}
-									{...restProps}
-								/>
-							) : (
-								<NonAuthenticateDrawer desktop={true} {...restProps} />
-							)}
-						</DesktopDrawerContainer>
-					</div>
-				</Desktop>
-			</>
+		const MobileUI = (
+			<MobileOrTablet key='mobile'>
+				<div className={drawerClasses}>
+					<MobileDrawerContainer>
+						{isAuthenticated ? (
+							<AuthenticateDrawer user={user} desktop={false} {...restProps} />
+						) : (
+							<NonAuthenticateDrawer desktop={false} {...restProps} />
+						)}
+					</MobileDrawerContainer>
+				</div>
+			</MobileOrTablet>
 		)
+
+		const DesktopUI = (
+			<Desktop key='desktop'>
+				<div className='side-drawer-desktop'>
+					<DesktopDrawerContainer>
+						{isAuthenticated ? (
+							<AuthenticateDrawer user={user} desktop={true} {...restProps} />
+						) : (
+							<NonAuthenticateDrawer desktop={true} {...restProps} />
+						)}
+					</DesktopDrawerContainer>
+				</div>
+			</Desktop>
+		)
+
+		const UI = [DesktopUI, MobileUI]
+
+		if (onlyDesktop) {
+			UI.pop()
+		}
+
+		return <>{UI}</>
 	}
 }
 

@@ -10,7 +10,9 @@ import Header from '../../components/common/Header'
 import { randomString } from '../../utils/helpers'
 import Footer from '../../components/common/Footer'
 import { history } from '../../app/AppRoutes'
+import variables from '../../config/vars'
 
+const { JOB_APPLYING_DATA } = variables
 const features = [
 	'Visualizing creative ideas with clients.',
 	'Testing and improving the design of the website.',
@@ -145,7 +147,7 @@ export class JobListing extends Component {
 															type='primary'
 															htmlType='button'
 															onClick={() => {
-																localStorage.setItem('JOB_APPLYING', JSON.stringify(job))
+																localStorage.setItem(JOB_APPLYING_DATA, JSON.stringify(job))
 																history.push('/apply')
 															}}
 														>

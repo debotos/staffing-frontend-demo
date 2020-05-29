@@ -19,7 +19,7 @@ import { history } from '../../app/AppRoutes'
 import Footer from '../../components/common/Footer'
 import variables from '../../config/vars'
 
-const { PRIMARY_COLOR } = variables
+const { PRIMARY_COLOR, JOB_APPLYING_DATA } = variables
 const { TabPane } = Tabs
 const tabs = [
 	{
@@ -58,10 +58,10 @@ class EmploymentApplication extends Component {
 	componentDidMount() {
 		const jobError = (msg = 'Something went wrong. Please try again!') => {
 			message.error(msg)
-			history.replace('/jobs')
+			history.replace('/')
 		}
 		try {
-			const jobData = localStorage.getItem('JOB_APPLYING')
+			const jobData = localStorage.getItem(JOB_APPLYING_DATA)
 			if (!jobData) {
 				jobError('No job selected. Please select a job!')
 				return
@@ -69,7 +69,7 @@ class EmploymentApplication extends Component {
 			const jobApplying = JSON.parse(jobData)
 			this.setState({ jobApplying })
 		} catch (error) {
-			console.log(`Unable to parse 'JOB_APPLYING' data.`, error)
+			console.log(`Unable to parse '${JOB_APPLYING_DATA}' data.`, error)
 			jobError()
 		}
 	}

@@ -1,6 +1,10 @@
-# Care Pine Home Health Client App
+# Care Pine Home Health | Staffing
+
+> **App for CarePine job recruiter & applicant. Related to Job posting(By Recruiter), Job listing, Job Application.**
 
 ## Available Scripts
+
+> **In local development install the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) VS Code Extensions**
 
 - `yarn install` [Install dependency]
 - `yarn start` [Open [http://localhost:3000](http://localhost:3000) to view it in the browser.]
@@ -8,13 +12,12 @@
 - `yarn build` [Builds the app for production to the `build` folder.]
 - `yarn eject` [**Note: this is a one-way operation. Once you `eject`, you can’t go back!**]
 
-> **In local development install the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) VS Code Extensions**
-
 ## Project Structure
 
 <!-- prettier-ignore-start -->
 ```md
-|-- Care Pine Home Health Client App
+|-- Care Pine Home Health | Staffing
+    |-- .DS_Store
     |-- .eslintrc
     |-- .gitignore
     |-- .prettierrc
@@ -24,8 +27,10 @@
     |-- yarn.lock
     |-- .vscode
     |   |-- settings.json
+    |-- docs
     |-- public
-    |   |-- favicon.ico
+    |   |-- .DS_Store
+    |   |-- favicon.png
     |   |-- index.html
     |   |-- logo.png
     |   |-- logo192.png
@@ -78,12 +83,6 @@
         |   |-- drawer-navigation.css
         |   |-- index.js
         |-- pages
-        |   |-- Administration
-        |   |   |-- index.js
-        |   |-- Billing
-        |   |   |-- index.js
-        |   |-- Clinical
-        |   |   |-- index.js
         |   |-- Dashboard
         |   |   |-- index.js
         |   |-- EmploymentApplication
@@ -110,87 +109,28 @@
         |   |       |-- EditReferenceInfo.js
         |   |       |-- ReferenceInfoTable.js
         |   |       |-- index.js
-        |   |-- HR
-        |   |   |-- index.js
-        |   |-- Intake
-        |   |   |-- index.js
-        |   |   |-- Clinical
-        |   |   |   |-- index.js
-        |   |   |   |-- AdvanceDirective
-        |   |   |   |   |-- AddAdvanceDirective.js
-        |   |   |   |   |-- AdvanceDirectiveTable.js
-        |   |   |   |   |-- EditAdvanceDirective.js
-        |   |   |   |-- Allergies
-        |   |   |   |   |-- AddAllergies.js
-        |   |   |   |   |-- AllergiesTable.js
-        |   |   |   |   |-- EditAllergies.js
-        |   |   |   |-- Diagnosis
-        |   |   |   |   |-- AddDiagnosis.js
-        |   |   |   |   |-- DiagnosisTable.js
-        |   |   |   |   |-- EditDiagnosis.js
-        |   |   |   |-- InpatientEvents
-        |   |   |   |   |-- AddInpatientEvents.js
-        |   |   |   |   |-- EditInpatientEvents.js
-        |   |   |   |   |-- InpatientEventsTable.js
-        |   |   |   |-- Physician
-        |   |   |   |   |-- AddPhysician.js
-        |   |   |   |   |-- EditPhysician.js
-        |   |   |   |   |-- PhysicianTable.js
-        |   |   |   |-- Vaccination
-        |   |   |       |-- AddVaccination.js
-        |   |   |       |-- EditVaccination.js
-        |   |   |       |-- VaccinationTable.js
-        |   |   |-- Demographics
-        |   |   |   |-- index.js
-        |   |   |   |-- Contact
-        |   |   |   |   |-- ContactAdd.js
-        |   |   |   |   |-- ContactEdit.js
-        |   |   |   |   |-- ContactTable.js
-        |   |   |   |-- ServiceLocation
-        |   |   |       |-- ServiceLocationAdd.js
-        |   |   |       |-- ServiceLocationEdit.js
-        |   |   |       |-- ServiceLocationTable.js
-        |   |   |-- PayorSource
-        |   |   |   |-- index.js
-        |   |   |   |-- PayorSource
-        |   |   |       |-- AddPayorSource.js
-        |   |   |       |-- EditPayorSource.js
-        |   |   |       |-- PayorSourceTable.js
-        |   |   |       |-- Authorization
-        |   |   |           |-- AddAuthorization.js
-        |   |   |           |-- AuthorizationTable.js
-        |   |   |           |-- EditAuthorization.js
-        |   |   |           |-- AuthorizationDetails
-        |   |   |               |-- AuthorizationDetailsAdd.js
-        |   |   |               |-- AuthorizationDetailsEdit.js
-        |   |   |               |-- AuthorizationDetailsTable.js
-        |   |   |-- Referral
-        |   |   |   |-- index.js
-        |   |   |   |-- ReferralSource
-        |   |   |       |-- AddReferralSource.js
-        |   |   |       |-- EditReferralSource.js
-        |   |   |       |-- ReferralSourceTable.js
-        |   |   |       |-- CaseManager
-        |   |   |           |-- AddCaseManager.js
-        |   |   |           |-- CaseManagerTable.js
-        |   |   |           |-- EditCaseManager.js
-        |   |   |-- Request
-        |   |       |-- index.js
         |   |-- JobListing
         |   |   |-- index.js
         |   |-- Login
         |   |   |-- index.js
-        |   |-- Marketing
+        |   |-- Profile
         |   |   |-- index.js
-        |   |-- PayRoll
-        |   |   |-- index.js
-        |   |-- Reports
-        |   |   |-- index.js
-        |   |-- Schedule
-        |   |   |-- index.js
+        |   |-- Recruiter
+        |   |   |-- Candidates
+        |   |   |   |-- index.js
+        |   |   |-- Dashboard
+        |   |   |   |-- index.js
+        |   |   |-- Interviews
+        |   |   |   |-- index.js
+        |   |   |-- Jobs
+        |   |   |   |-- index.js
+        |   |   |-- Messages
+        |   |   |   |-- index.js
+        |   |   |-- Reports
+        |   |   |   |-- index.js
+        |   |   |-- Setting
+        |   |       |-- index.js
         |   |-- SignUp
-        |   |   |-- index.js
-        |   |-- Workflow
         |       |-- index.js
         |-- redux
         |   |-- actions
@@ -304,6 +244,8 @@
         |-- utils
             |-- PrivateRoute.js
             |-- PublicRoute.js
+            |-- RecruiterRoute.js
+            |-- checkFormSectionMissing.js
             |-- helpers.js
 
 ```

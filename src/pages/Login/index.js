@@ -11,7 +11,7 @@ import { Container, Image, Box } from '../SignUp'
 import { setCurrentUser } from '../../redux/actions/authActions'
 import variables from '../../config/vars'
 
-const { USER_DATA } = variables
+const { USER_DATA, JOB_APPLYING_DATA } = variables
 
 export class Login extends Component {
 	onFinish = (values) => {
@@ -22,6 +22,10 @@ export class Login extends Component {
 		/* Save to Redux for app use*/
 		/* Also it will instantly redirect the user to Dashboard page */
 		this.props.setUser(values)
+		/* If they came to this page via selecting a job then redirect to apply */
+		if (localStorage[JOB_APPLYING_DATA]) {
+			history.push('/apply')
+		}
 	}
 
 	onFinishFailed = (errorInfo) => {

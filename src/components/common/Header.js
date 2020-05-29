@@ -71,8 +71,13 @@ export class Header extends Component {
 
 	render() {
 		const { sideDrawerOpen } = this.state
-		// prettier-ignore
-		const { title, sticky = false, bgColor, auth: { user } } = this.props
+		const {
+			title,
+			sticky = false,
+			bgColor,
+			auth: { isAuthenticated, user },
+			sideNavProps = {},
+		} = this.props
 
 		return (
 			/*
@@ -100,25 +105,27 @@ export class Header extends Component {
 						</LogoContainer>
 
 						<div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-							<Dropdown
-								overlay={this.getDropdownMenu()}
-								placement='bottomRight'
-								trigger={['hover', 'click']}
-							>
-								{user.profile_img ? (
-									<Avatar size={38} src={user.profile_img} />
-								) : user.username ? (
-									<Avatar size={38} style={{ backgroundColor: PRIMARY_COLOR }}>
-										{user.email.charAt(0).toUpperCase()}
-									</Avatar>
-								) : (
-									<Avatar
-										size={38}
-										icon={<UserOutlined />}
-										style={{ backgroundColor: PRIMARY_COLOR }}
-									/>
-								)}
-							</Dropdown>
+							{isAuthenticated ? (
+								<Dropdown
+									overlay={this.getDropdownMenu()}
+									placement='bottomRight'
+									trigger={['hover', 'click']}
+								>
+									{user.profile_img ? (
+										<Avatar size={38} src={user.profile_img} />
+									) : user.username ? (
+										<Avatar size={38} style={{ backgroundColor: PRIMARY_COLOR }}>
+											{user.email.charAt(0).toUpperCase()}
+										</Avatar>
+									) : (
+										<Avatar
+											size={38}
+											icon={<UserOutlined />}
+											style={{ backgroundColor: PRIMARY_COLOR }}
+										/>
+									)}
+								</Dropdown>
+							) : null}
 						</div>
 					</Container>
 				</header>
@@ -135,6 +142,7 @@ export class Header extends Component {
 						show={sideDrawerOpen}
 						closeDrawer={this.drawerToggleHandler}
 						setLoading={this.setLoading}
+						{...sideNavProps}
 					/>
 					{/* Side Drawer Navigation Backdrop */}
 					{sideDrawerOpen && (

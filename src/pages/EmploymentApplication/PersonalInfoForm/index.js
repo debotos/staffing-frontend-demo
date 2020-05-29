@@ -188,7 +188,7 @@ export class PersonalInfoForm extends Component {
 						<span>Job You're Applying</span>
 						<span
 							style={{ cursor: 'pointer', color: PRIMARY_COLOR }}
-							onClick={() => history.replace('/jobs')}
+							onClick={() => history.replace('/')}
 						>
 							<LeftCircleOutlined /> Select Another
 						</span>
