@@ -18,8 +18,10 @@ import ReferencesInfoForm from './ReferencesInfoForm'
 import { history } from '../../app/AppRoutes'
 import Footer from '../../components/common/Footer'
 import variables from '../../config/vars'
+import keys from '../../config/keys'
 
 const { PRIMARY_COLOR, JOB_APPLYING_DATA } = variables
+const { ROUTES } = keys
 const { TabPane } = Tabs
 const tabs = [
 	{
@@ -58,7 +60,7 @@ class EmploymentApplication extends Component {
 	componentDidMount() {
 		const jobError = (msg = 'Something went wrong. Please try again!') => {
 			message.error(msg)
-			history.replace('/')
+			history.replace(ROUTES.home)
 		}
 		try {
 			const jobData = localStorage.getItem(JOB_APPLYING_DATA)

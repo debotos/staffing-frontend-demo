@@ -3,6 +3,9 @@ import { NavLink } from 'react-router-dom'
 import { MdWork, MdLock, MdPersonAdd } from 'react-icons/md'
 
 import { CloseButton, NavArea, ActionContainer } from './CommonUI'
+import keys from '../config/keys'
+
+const { ROUTES } = keys
 
 function NonAuthenticateDrawer({ closeDrawer, desktop }) {
 	return (
@@ -27,7 +30,7 @@ function NonAuthenticateDrawer({ closeDrawer, desktop }) {
 export default NonAuthenticateDrawer
 
 const NavRoutes = [
-	{ icon: <MdWork />, to: '/', label: 'Jobs' },
-	{ icon: <MdLock />, to: '/login', label: 'Login' },
-	{ icon: <MdPersonAdd />, to: '/signup', label: 'Signup' },
+	{ icon: <MdWork />, to: ROUTES.home, label: 'Jobs' },
+	{ icon: <MdLock />, to: ROUTES.login, label: 'Login' },
+	{ icon: <MdPersonAdd />, to: ROUTES.signup, label: 'Signup' },
 ]

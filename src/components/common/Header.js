@@ -14,8 +14,10 @@ import { history } from '../../app/AppRoutes'
 import Logo from '../../assets/logo.png'
 import { MobileOrTablet, Desktop } from '../common/Device'
 import variables from '../../config/vars'
+import keys from '../../config/keys'
 
 const { PRIMARY_COLOR, USER_DATA, RECRUITER_ROLE } = variables
+const { ROUTES } = keys
 
 export class Header extends Component {
 	componentDidMount() {
@@ -55,7 +57,7 @@ export class Header extends Component {
 	getDropdownMenu = () => {
 		return (
 			<Menu>
-				<Menu.Item onClick={() => history.push('/profile')}>
+				<Menu.Item onClick={() => history.push(ROUTES.profile)}>
 					<span>
 						<UserOutlined /> Profile
 					</span>
@@ -106,7 +108,7 @@ export class Header extends Component {
 							<AppLogo
 								src={Logo}
 								alt='Care Pine Home Health'
-								onClick={() => history.push(isRecruiter ? '/recruiter' : '/')}
+								onClick={() => history.push(isRecruiter ? ROUTES.RDashboard : ROUTES.home)}
 							/>
 							{title && <h3 style={{ marginTop: '8px', textAlign: 'center' }}>{title}</h3>}
 						</LogoContainer>

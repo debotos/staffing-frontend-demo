@@ -3,8 +3,10 @@ import { connect } from 'react-redux'
 import { Route, Redirect } from 'react-router-dom'
 
 import variables from '../config/vars'
+import keys from '../config/keys'
 
 const { RECRUITER_ROLE } = variables
+const { ROUTES } = keys
 
 export const PublicRoute = ({ auth, component: Component, ...restVars }) => {
 	const { isAuthenticated, user } = auth
@@ -14,7 +16,7 @@ export const PublicRoute = ({ auth, component: Component, ...restVars }) => {
 			{...restVars}
 			component={(props) =>
 				isAuthenticated ? (
-					<Redirect to={isRecruiter ? '/recruiter' : '/'} />
+					<Redirect to={isRecruiter ? ROUTES.RDashboard : ROUTES.home} />
 				) : (
 					<Component {...props} />
 				)

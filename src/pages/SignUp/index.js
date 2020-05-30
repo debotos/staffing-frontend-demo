@@ -7,6 +7,9 @@ import { Link } from 'react-router-dom'
 import signUpBG from '../../assets/signUpBG.jpg'
 import Logo from '../../assets/logo.png'
 import { passwordValidationRegex } from '../../utils/helpers'
+import keys from '../../config/keys'
+
+const { ROUTES } = keys
 
 export class SignUp extends Component {
 	onFinish = (values) => {
@@ -122,7 +125,7 @@ export class SignUp extends Component {
 							</Button>
 						</div>
 
-						<Link to='/login'>Sign In</Link>
+						<Link to={ROUTES.login}>Sign In</Link>
 					</Form>
 				</Box>
 			</Container>

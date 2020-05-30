@@ -10,8 +10,10 @@ import Logo from '../../assets/logo.png'
 import { Container, Image, Box } from '../SignUp'
 import { setCurrentUser } from '../../redux/actions/authActions'
 import variables from '../../config/vars'
+import keys from '../../config/keys'
 
 const { USER_DATA, JOB_APPLYING_DATA } = variables
+const { ROUTES } = keys
 
 export class Login extends Component {
 	onFinish = (values) => {
@@ -24,7 +26,7 @@ export class Login extends Component {
 		this.props.setUser(values)
 		/* If they came to this page via selecting a job then redirect to apply */
 		if (localStorage[JOB_APPLYING_DATA]) {
-			history.push('/apply')
+			history.push(ROUTES.apply)
 		}
 	}
 
@@ -91,7 +93,7 @@ export class Login extends Component {
 								icon={<UserAddOutlined />}
 								type='dashed'
 								htmlType='button'
-								onClick={() => history.push('/signup')}
+								onClick={() => history.push(ROUTES.signup)}
 							>
 								Sign Up
 							</Button>

@@ -4,8 +4,10 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 
 import variables from '../config/vars'
+import keys from '../config/keys'
 
 const { RECRUITER_ROLE } = variables
+const { ROUTES } = keys
 
 const RecruiterRoute = ({ component: Component, auth, ...rest }) => {
 	const { isAuthenticated, user } = auth
@@ -14,7 +16,7 @@ const RecruiterRoute = ({ component: Component, auth, ...rest }) => {
 		<Route
 			{...rest}
 			render={(props) =>
-				isAuthenticated && isRecruiter ? <Component {...props} /> : <Redirect to='/login' />
+				isAuthenticated && isRecruiter ? <Component {...props} /> : <Redirect to={ROUTES.login} />
 			}
 		/>
 	)

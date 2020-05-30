@@ -32,8 +32,10 @@ import { JobDetailsHighlight } from '../../JobListing'
 import { history } from '../../../app/AppRoutes'
 import Btn from '../../../components/UI/Button'
 import variables from '../../../config/vars'
+import keys from '../../../config/keys'
 
 const { PRIMARY_COLOR } = variables
+const { ROUTES } = keys
 const CheckboxGroup = Checkbox.Group
 const { Option } = Select
 const { TextArea } = Input
@@ -188,7 +190,7 @@ export class PersonalInfoForm extends Component {
 						<span>Job You're Applying</span>
 						<span
 							style={{ cursor: 'pointer', color: PRIMARY_COLOR }}
-							onClick={() => history.replace('/')}
+							onClick={() => history.replace(ROUTES.home)}
 						>
 							<LeftCircleOutlined /> Select Another
 						</span>

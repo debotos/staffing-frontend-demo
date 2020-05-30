@@ -15,8 +15,10 @@ import {
 import { CloseButton, LogoffButton, NavArea, ActionContainer } from './CommonUI'
 import { setCurrentUser } from '../redux/actions/authActions'
 import variables from '../config/vars'
+import keys from '../config/keys'
 
 const { RECRUITER_ROLE, USER_DATA } = variables
+const { ROUTES } = keys
 
 function AuthenticateDrawer({ closeDrawer, setUser, auth, desktop, recruiterNav }) {
 	const handleLogoff = () => {
@@ -77,16 +79,16 @@ const mapDispatchToProps = (dispatch) => ({ setUser: (user) => dispatch(setCurre
 export default connect(mapStateToProps, mapDispatchToProps)(AuthenticateDrawer)
 
 const normalRoutes = [
-	{ icon: <MdWork />, to: '/', label: 'Jobs' },
-	{ icon: <MdHome />, to: '/dashboard', label: 'Dashboard' },
+	{ icon: <MdWork />, to: ROUTES.home, label: 'Jobs' },
+	{ icon: <MdHome />, to: ROUTES.ADashboard, label: 'Dashboard' },
 ]
 
 const recruiterRoutes = [
-	{ icon: <FaTachometerAlt />, to: '/recruiter', label: 'Dashboard' },
-	{ icon: <MdWork />, to: '/recruiter/jobs', label: 'Jobs' },
-	{ icon: <FaUsers />, to: '/recruiter/candidates', label: 'Candidates' },
-	{ icon: <FaRegEnvelope />, to: '/recruiter/messages', label: 'Messages' },
-	{ icon: <FaUserTie />, to: '/recruiter/interviews', label: 'Interviews' },
-	{ icon: <FaRegFileAlt />, to: '/recruiter/reports', label: 'Reports' },
-	{ icon: <FaCog />, to: '/recruiter/setting', label: 'Setting' },
+	{ icon: <FaTachometerAlt />, to: ROUTES.RDashboard, label: 'Dashboard' },
+	{ icon: <MdWork />, to: ROUTES.RJobs, label: 'Jobs' },
+	{ icon: <FaUsers />, to: ROUTES.RCandidates, label: 'Candidates' },
+	{ icon: <FaRegEnvelope />, to: ROUTES.RMessages, label: 'Messages' },
+	{ icon: <FaUserTie />, to: ROUTES.RInterviews, label: 'Interviews' },
+	{ icon: <FaRegFileAlt />, to: ROUTES.RReports, label: 'Reports' },
+	{ icon: <FaCog />, to: ROUTES.RSetting, label: 'Setting' },
 ]

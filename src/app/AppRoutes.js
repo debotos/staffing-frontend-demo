@@ -20,6 +20,10 @@ import RecruiterMessages from '../pages/Recruiter/Messages'
 import RecruiterInterviews from '../pages/Recruiter/Interviews'
 import RecruiterReports from '../pages/Recruiter/Reports'
 import RecruiterSetting from '../pages/Recruiter/Setting'
+// Others
+import keys from '../config/keys'
+
+const { ROUTES } = keys
 
 export const history = createHistory()
 
@@ -27,22 +31,22 @@ function AppRoutes() {
 	return (
 		<Router history={history}>
 			<Switch>
-				<PublicRoute exact path='/login' component={Login} />
-				<PublicRoute exact path='/signup' component={SignUp} />
+				<PublicRoute exact path={ROUTES.login} component={Login} />
+				<PublicRoute exact path={ROUTES.signup} component={SignUp} />
 
-				<RecruiterRoute exact path='/recruiter/setting' component={RecruiterSetting} />
-				<RecruiterRoute exact path='/recruiter/reports' component={RecruiterReports} />
-				<RecruiterRoute exact path='/recruiter/interviews' component={RecruiterInterviews} />
-				<RecruiterRoute exact path='/recruiter/messages' component={RecruiterMessages} />
-				<RecruiterRoute exact path='/recruiter/candidates' component={RecruiterCandidates} />
-				<RecruiterRoute exact path='/recruiter/jobs' component={RecruiterJobs} />
-				<RecruiterRoute exact path='/recruiter' component={RecruiterDashboard} />
+				<RecruiterRoute exact path={ROUTES.RSetting} component={RecruiterSetting} />
+				<RecruiterRoute exact path={ROUTES.RReports} component={RecruiterReports} />
+				<RecruiterRoute exact path={ROUTES.RInterviews} component={RecruiterInterviews} />
+				<RecruiterRoute exact path={ROUTES.RMessages} component={RecruiterMessages} />
+				<RecruiterRoute exact path={ROUTES.RCandidates} component={RecruiterCandidates} />
+				<RecruiterRoute exact path={ROUTES.RJobs} component={RecruiterJobs} />
+				<RecruiterRoute exact path={ROUTES.RDashboard} component={RecruiterDashboard} />
 
-				<PrivateRoute exact path='/profile' component={Profile} />
-				<PrivateRoute exact path='/apply' component={EmploymentApplication} />
-				<PrivateRoute exact path='/dashboard' component={Dashboard} />
+				<PrivateRoute exact path={ROUTES.profile} component={Profile} />
+				<PrivateRoute exact path={ROUTES.apply} component={EmploymentApplication} />
+				<PrivateRoute exact path={ROUTES.ADashboard} component={Dashboard} />
 
-				<Route exact path='/' component={JobListing} />
+				<Route exact path={ROUTES.home} component={JobListing} />
 			</Switch>
 		</Router>
 	)
