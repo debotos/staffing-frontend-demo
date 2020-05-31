@@ -3,7 +3,8 @@ import { Form, Select, Input, Button, DatePicker, Divider, InputNumber, Radio } 
 import { SaveOutlined } from '@ant-design/icons'
 import { Row, Col } from 'styled-bootstrap-grid'
 
-import { states, phoneTypes, salaryTypes } from '../PersonalInfoForm'
+import { phoneTypes, salaryTypes } from '../PersonalInfoForm'
+import { states } from '../../../utils/generateInputData'
 import { phoneValidationRegex, zipCodeValidationRegex } from '../../../utils/helpers'
 import { LeavingReasons, MAY_WE_CONTACT } from './AddEmploymentInfo'
 

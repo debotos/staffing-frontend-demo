@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import { StickyContainer, Sticky } from 'react-sticky'
 import { Progress } from 'semantic-ui-react'
 import { Tabs, message } from 'antd'
@@ -17,10 +16,11 @@ import PersonalInfoForm from './PersonalInfoForm'
 import ReferencesInfoForm from './ReferencesInfoForm'
 import { history } from '../../app/AppRoutes'
 import Footer from '../../components/common/Footer'
+import { TabHeadItem } from '../../components/UI/TabUtils'
 import variables from '../../config/vars'
 import keys from '../../config/keys'
 
-const { PRIMARY_COLOR, JOB_APPLYING_DATA } = variables
+const { JOB_APPLYING_DATA } = variables
 const { ROUTES } = keys
 const { TabPane } = Tabs
 const tabs = [
@@ -190,15 +190,3 @@ class EmploymentApplication extends Component {
 }
 
 export default EmploymentApplication
-
-const TabHeadItem = styled.span`
-	display: flex;
-	span {
-		margin: 0 5px;
-		color: ${(props) => props.done === 'true' && PRIMARY_COLOR};
-		svg {
-			font-weight: bold;
-			font-size: 20px;
-		}
-	}
-`

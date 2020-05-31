@@ -3,7 +3,8 @@ import { Form, Select, Input, Button, Divider } from 'antd'
 import { SaveOutlined } from '@ant-design/icons'
 import { Row, Col } from 'styled-bootstrap-grid'
 
-import { states, phoneTypes } from '../PersonalInfoForm'
+import { phoneTypes } from '../PersonalInfoForm'
+import { states } from '../../../utils/generateInputData'
 import { yearsKnown } from './AddReferenceInfo'
 import { phoneValidationRegex, zipCodeValidationRegex } from '../../../utils/helpers'
 

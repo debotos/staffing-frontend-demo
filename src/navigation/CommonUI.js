@@ -74,10 +74,6 @@ export const NavArea = styled.div`
 		display: flex;
 		flex-direction: column;
 		li {
-			opacity: 0.8;
-			&:hover {
-				opacity: 1;
-			}
 			a {
 				border-left: 3px solid transparent;
 				color: #47525d;
@@ -96,6 +92,10 @@ export const NavArea = styled.div`
 					svg {
 						font-size: 1.3rem;
 					}
+				}
+				&:hover {
+					color: ${PRIMARY_COLOR};
+					border-left-color: ${PRIMARY_COLOR};
 				}
 			}
 			a.active {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Form, Select, Input, Button, DatePicker } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
 
-import { states } from '../PersonalInfoForm'
+import { states } from '../../../utils/generateInputData'
 import { randomString } from '../../../utils/helpers'
 
 const { Option } = Select

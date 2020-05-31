@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import { Form, Select, Input, Button, DatePicker } from 'antd'
 import { SaveOutlined } from '@ant-design/icons'
 
-import { states } from '../PersonalInfoForm'
-
-const { Option } = Select
+import { states } from '../../../utils/generateInputData'
 
 export class EditEducationInfo extends Component {
 	onFinish = (values) => {
@@ -77,9 +75,9 @@ export class EditEducationInfo extends Component {
 						{states.map((type) => {
 							const { key, name, value } = type
 							return (
-								<Option key={key} value={value}>
+								<Select.Option key={key} value={value}>
 									{name}
-								</Option>
+								</Select.Option>
 							)
 						})}
 					</Select>

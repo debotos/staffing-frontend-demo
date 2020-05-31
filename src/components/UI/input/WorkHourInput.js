@@ -233,3 +233,25 @@ const MobileClickableTd = styled.td`
 	border-bottom: ${(props) => props.checked && 'none !important'};
 	border-top: ${(props) => props.checked && 'none !important'};
 `
+
+export const isWorkingHourProvided = (workingHours) => {
+	const workingHoursValueList = new Set(
+		clone(workingHours)
+			.map((y) => {
+				const values = []
+				Object.keys(y).forEach((item) => {
+					if (typeof y[item] === 'boolean') {
+						values.push(y[item].toString())
+					}
+				})
+				return values
+			})
+			.flat()
+	)
+	// console.log(workingHoursValueList)
+	if (workingHoursValueList.size === 1 && workingHoursValueList.has('false')) {
+		return false
+	} else {
+		return true
+	}
+}

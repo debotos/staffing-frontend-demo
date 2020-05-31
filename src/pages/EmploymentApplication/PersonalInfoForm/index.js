@@ -27,10 +27,14 @@ import { phoneValidationRegex, randomString, zipCodeValidationRegex } from '../.
 import EmergencyContactTable from './EmergencyContact/EmergencyContactTable'
 import EmergencyContactAdd from './EmergencyContact/EmergencyContactAdd'
 import EmergencyContactEdit from './EmergencyContact/EmergencyContactEdit'
-import WorkHourInput, { initialWorkingHourData } from '../../../components/UI/input/WorkHourInput'
+import WorkHourInput, {
+	initialWorkingHourData,
+	isWorkingHourProvided,
+} from '../../../components/UI/input/WorkHourInput'
 import { JobDetailsHighlight } from '../../JobListing'
 import { history } from '../../../app/AppRoutes'
 import Btn from '../../../components/UI/Button'
+import { states } from '../../../utils/generateInputData'
 import variables from '../../../config/vars'
 import keys from '../../../config/keys'
 
@@ -39,14 +43,6 @@ const { ROUTES } = keys
 const CheckboxGroup = Checkbox.Group
 const { Option } = Select
 const { TextArea } = Input
-
-export const states = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DE', 'FL', 'GA'].map(
-	(x, i) => ({
-		key: i,
-		name: x,
-		value: x,
-	})
-)
 
 export const phoneTypes = [
 	{ key: 1, name: 'Home', value: 'Home' },
@@ -102,23 +98,9 @@ export class PersonalInfoForm extends Component {
 		const hide = message.loading('Processing form...', 0)
 
 		// 1. Working Hours Validation
-		const workingHours = clone(this.state.workingHours)
-		// console.log(workingHours)
-		const workingHoursValueList = new Set(
-			workingHours
-				.map((y) => {
-					const values = []
-					Object.keys(y).forEach((item) => {
-						if (typeof y[item] === 'boolean') {
-							values.push(y[item].toString())
-						}
-					})
-					return values
-				})
-				.flat()
-		)
-		// console.log(workingHoursValueList)
-		if (workingHoursValueList.size === 1 && workingHoursValueList.has('false')) {
+		const workingHourProvided = isWorkingHourProvided(this.state.workingHours)
+		// console.log(workingHourProvided)
+		if (!workingHourProvided) {
 			message.error('Please select working hours!')
 			hide()
 			this.mounted && this.setState({ formProcessing: false })
@@ -604,11 +586,7 @@ export class PersonalInfoForm extends Component {
 									name='availableToWork'
 									rules={[{ required: true, message: 'Select availability!' }]}
 								>
-									<CheckboxGroup
-										options={['Full Time', 'Part Time', 'Per Diem']}
-										value={this.state.checkedList}
-										onChange={this.onChange}
-									/>
+									<CheckboxGroup options={['Full Time', 'Part Time', 'Per Diem']} />
 								</Form.Item>
 							</Col>
 						</Row>
